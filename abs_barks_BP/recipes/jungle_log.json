@@ -1,0 +1,28 @@
+{
+    "format_version": "1.20.30",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "abs:put_bark_on_jungle_log"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": [
+            {
+                "item": "abs:jungle_bark"
+            },
+            {
+                "item": "minecraft:stripped_jungle_log"
+            }
+        ],
+        "unlock": [
+            {
+                "item": "abs:jungle_bark"
+            }
+        ],
+        "result": {
+            "item": "minecraft:jungle_log",
+            "count": 1
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "resource_pack_name": "树皮模组",
+    "texture_data": {
+        "abs:acacia_bark": {
+            "textures": "textures/items/acacia_bark"
+        },
+        "abs:bamboo_bark": {
+            "textures": "textures/items/bamboo_bark"
+        },
+        "abs:birch_bark": {
+            "textures": "textures/items/birch_bark"
+        },
+        "abs:cherry_bark": {
+            "textures": "textures/items/cherry_bark"
+        },
+        "abs:crimson_bark": {
+            "textures": "textures/items/crimson_bark"
+        },
+        "abs:dark_oak_bark": {
+            "textures": "textures/items/dark_oak_bark"
+        },
+        "abs:jungle_bark": {
+            "textures": "textures/items/jungle_bark"
+        },
+        "abs:mangrove_bark": {
+            "textures": "textures/items/mangrove_bark"
+        },
+        "abs:oak_bark": {
+            "textures": "textures/items/oak_bark"
+        },
+        "abs:spruce_bark": {
+            "textures": "textures/items/spruce_bark"
+        },
+        "abs:warped_bark": {
+            "textures": "textures/items/warped_bark"
+        }
+    }
+}

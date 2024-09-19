@@ -1,0 +1,28 @@
+{
+    "format_version": "1.20.30",
+    "minecraft:recipe_shapeless": {
+        "description": {
+            "identifier": "abs:put_bark_on_oak_log"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "ingredients": [
+            {
+                "item": "abs:oak_bark"
+            },
+            {
+                "item": "minecraft:stripped_oak_log"
+            }
+        ],
+        "unlock": [
+            {
+                "item": "abs:oak_bark"
+            }
+        ],
+        "result": {
+            "item": "minecraft:oak_log",
+            "count": 1
+        }
+    }
+}
