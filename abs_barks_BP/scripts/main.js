@@ -136,7 +136,6 @@ world.beforeEvents.itemUseOn.subscribe(data=>{
                         volume: 0.9
                     });
                     break;
-                    break;
                 case "cherry":
                     block.dimension.playSound("fall.cherry_wood", {
                         x: block.location.x + 0.5,
