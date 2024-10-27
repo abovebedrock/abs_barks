@@ -6,9 +6,9 @@
     "header": {
         "name": "树皮模组",
         "description": "基岩之上服务器模组。提供去皮时掉落的树皮，可以放回去。",
-        "min_engine_version": [ 1, 21, 30 ],
+        "min_engine_version": [ 1, 21, 42 ],
         "uuid": "e8f6292f-ecdb-42ee-9f98-e0d9f05462ae",
-        "version": [ 1, 0, 1 ]
+        "version": [ 1, 0, 2 ]
     },
     "modules": [
         {
@@ -27,11 +27,11 @@
     "dependencies": [
         {
             "uuid": "6da1ba8c-9f3e-4d5c-b209-81075ea6ad85",
-            "version": [ 1, 0, 1 ]
+            "version": [ 1, 0, 2 ]
         },
         {
             "module_name": "@minecraft/server",
-            "version": "1.15.0-beta"
+            "version": "1.16.0-beta"
         }
     ]
 }
