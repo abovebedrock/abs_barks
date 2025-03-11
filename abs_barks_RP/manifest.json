@@ -6,9 +6,9 @@
     "header": {
         "name": "树皮模组",
         "description": "基岩之上服务器模组。提供去皮时掉落的树皮，可以放回去。",
-        "min_engine_version": [ 1, 21, 62 ],
+        "min_engine_version": [ 1, 21, 41 ],
         "uuid": "6da1ba8c-9f3e-4d5c-b209-81075ea6ad85",
-        "version": [ 1, 1, 0 ]
+        "version": [ 1, 0, 2 ]
     },
     "modules": [
         {
