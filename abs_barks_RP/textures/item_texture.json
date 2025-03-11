@@ -33,6 +33,9 @@
         },
         "abs:warped_bark": {
             "textures": "textures/items/warped_bark"
+        },
+        "abs:pale_oak_bark": {
+            "textures": "textures/items/pale_oak_bark"
         }
     }
 }

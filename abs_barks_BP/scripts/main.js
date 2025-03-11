@@ -1,5 +1,5 @@
 //@ts-check
-import { world, system, ItemStack, BlockPermutation, EntityEquippableComponent, EquipmentSlot, Player, GameMode, Direction } from "@minecraft/server";
+import { world, system, ItemStack, BlockPermutation, EntityEquippableComponent, EquipmentSlot, GameMode } from "@minecraft/server";
 import { decide } from "./random";
 
 const
@@ -11,7 +11,7 @@ const
         "diamond",
         "netherite"
     ].map(value=>`minecraft:${value}_axe`),
-    /**@type {readonly ["oak", "birch", "spruce", "jungle", "acacia", "dark_oak", "mangrove" ,"cherry"]}*/
+    /**@type {readonly ["oak", "birch", "spruce", "jungle", "acacia", "dark_oak", "mangrove" ,"cherry", "pale_oak"]}*/
     overworldTypes = [
         "oak",
         "birch",
@@ -20,7 +20,8 @@ const
         "acacia",
         "dark_oak",
         "mangrove",
-        "cherry"
+        "cherry",
+        "pale_oak"
     ],
     toxicLevel = {
         oak: 0.2,
@@ -33,7 +34,8 @@ const
         cherry: 0.6,
         crimson: 1.0,
         warped: 1.0,
-        bamboo: 0.6
+        bamboo: 0.6,
+        pale_oak: 0.9
     },
     logs = [
         ...overworldTypes.map(value=>`minecraft:${value}_log`),
@@ -66,6 +68,7 @@ function isModItem(id){
     return id.includes("abs:") && id.includes("_bark");
 }
 
+//Strip wood using axe
 world.beforeEvents.playerInteractWithBlock.subscribe(data=>{
     if(data.itemStack && axes.includes(data.itemStack.typeId) && logs.includes(data.block.typeId)){
         const {block, player} = data, blockLocation = block.location, playerLocation = player.location, spawnLocation = (()=>{
@@ -104,11 +107,12 @@ world.beforeEvents.playerInteractWithBlock.subscribe(data=>{
     }
 });
 
+//Put bark on wood
 world.beforeEvents.itemUseOn.subscribe(data=>{
     if(data.source.typeId === "minecraft:player" && data.itemStack && stripped_logs.includes(data.block.typeId) && isModItem(data.itemStack.typeId) && getType(data.block.typeId) === getType(data.itemStack.typeId)){
         const {itemStack, source, block} = data;
         system.run(()=>{
-            block.setPermutation(BlockPermutation.resolve(block.typeId.replace("stripped_", ""), block.typeId.includes("wood") && getType(block.typeId) !== "cherry" && getType(block.typeId) !== "mangrove" ? block.permutation.withState("stripped_bit", false).getAllStates() : block.permutation.getAllStates()));
+            block.setPermutation(BlockPermutation.resolve(block.typeId.replace("stripped_", ""), block.typeId.includes("wood") && getType(block.typeId) !== "cherry" && getType(block.typeId) !== "mangrove" && getType(block.typeId) !== "pale_oak" ? block.permutation.withState("stripped_bit", false).getAllStates() : block.permutation.getAllStates()));
             switch(getType(block.typeId)){
                 case "oak":
                 case "spruce":
@@ -117,6 +121,7 @@ world.beforeEvents.itemUseOn.subscribe(data=>{
                 case "dark_oak":
                 case "jungle":
                 case "mangrove":
+                case "pale_oak":
                     block.dimension.playSound("fall.wood", {
                         x: block.location.x + 0.5,
                         y: block.location.y + 0.5,
@@ -169,6 +174,7 @@ world.beforeEvents.itemUseOn.subscribe(data=>{
             });
         });
     }
+    else world.sendMessage("??");
 });
 
 world.afterEvents.itemCompleteUse.subscribe(data=>{
@@ -176,5 +182,6 @@ world.afterEvents.itemCompleteUse.subscribe(data=>{
         if(decide(0.8)) data.source.addEffect("minecraft:hunger", 400);
         if(decide(toxicLevel[getType(data.itemStack.typeId)])) data.source.addEffect("minecraft:poison", 160);
         if(getType(data.itemStack.typeId) === "warped" && decide(0.2)) data.source.addEffect("minecraft:nausea", 120);
+        if(getType(data.itemStack.typeId) == "pale_oak" && decide(0.4)) data.source.addEffect("minecraft:blindness", 100);
     }
 });
