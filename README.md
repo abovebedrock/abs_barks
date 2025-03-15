@@ -4,4 +4,4 @@
 
 ---
 
-©2018-2024 AboveBedrock SMP. Licensed under AGPL 3.0 or later. Image `pack_icon.png` file all rights reserved.
+©2018-2025 AboveBedrock SMP. Licensed under AGPL 3.0 or later. Image `pack_icon.png` file all rights reserved.
